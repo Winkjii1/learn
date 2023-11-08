@@ -1,8 +1,8 @@
-# learn
+# Tic-Tac-Toe
 import pygame
 import sys
 
-# Initialize Pygame
+# Pygame
 pygame.init()
 
 # Constants
@@ -11,8 +11,8 @@ LINE_WIDTH = 15
 BOARD_ROWS, BOARD_COLS = 3, 3
 SQUARE_SIZE = WIDTH // BOARD_ROWS
 
-# Colors
-WHITE = (193,205,205)
+# Color
+WHITE = (230,230,230)
 CYAN = (0,139,139)
 RED = (255, 0, 0)
 
@@ -21,9 +21,9 @@ win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Tic Tac Toe')
 
 # Fonts
-END_FONT = pygame.font.SysFont('comicsans', 40)
+END_FONT = pygame.font.SysFont('comicsans', 28)
 
-# Variables
+# ตัวแปร X Y
 turn = 'X'
 board = [['' for _ in range(BOARD_ROWS)] for _ in range(BOARD_COLS)]
 game_over = False
@@ -73,7 +73,7 @@ def draw_score():
     score_text = END_FONT.render(f"X: {score['X']}  O: {score['O']}", True, CYAN)
     win.blit(score_text, (10, 10))
 
-# Game Loop
+# Loop
 run = True
 while run:
     win.fill(WHITE)
@@ -93,13 +93,13 @@ while run:
             if board[row][col] == '':
                 board[row][col] = turn
                 if check_winner():
-                    display_message(f"Player {turn} wins!")
+                    display_message(f"Player {turn} wins")
                     score[turn] += 1
                     game_over = True
                     display_message(f"Press space to restart")
                     game_over = True
                 elif all(board[i][j] != '' for i in range(BOARD_ROWS) for j in range(BOARD_COLS)):
-                    display_message("It's a tie!")
+                    display_message("Draw score")
                     game_over = True
                     display_message(f"Press space to restart")
                     game_over = True
